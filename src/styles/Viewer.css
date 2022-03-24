@@ -1,0 +1,24 @@
+.viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 50px);
+    width: 100vw;
+}
+
+#mainImage {
+    width: auto;
+    height: auto;
+    max-height: calc(100vh - 50px);
+    max-width: 100vw;
+    z-index: -1;
+}
+
+#bgImage {
+    position: absolute;
+    object-fit: fill;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    z-index: -2;
+    filter: blur(50px);
+}

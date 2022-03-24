@@ -1,0 +1,25 @@
+#prevNextButtons {
+    position: absolute;
+    display: flex;
+    height: calc(100vh - 50px);
+    width: 100vw;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#prevNextButtons button {
+    font-size: 5em;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(224, 224, 224);
+    text-shadow: 0 0 5px black;
+}
+
+#prevNextButtons button:hover {
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px rgb(156, 156, 156);
+}
+
+

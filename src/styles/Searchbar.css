@@ -1,0 +1,36 @@
+#searchbar {
+    background-color: #3d3d3d;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+#searchbox {
+    width: max(20%, 200px);
+    background-color: rgb(230, 230, 230);
+    display: flex;
+    border-radius: 20px;
+    padding: 8px;
+    margin-left: 5px;
+    z-index: 1;
+}
+
+#searchbox input {
+    font-size: medium;
+    width: 90%;
+    background-color: transparent;
+    border: none;
+    margin-left: 10px;
+}
+
+#searchbox input:focus {
+    outline: none;
+}
+
+#searchbox button {
+    font-size: medium;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
