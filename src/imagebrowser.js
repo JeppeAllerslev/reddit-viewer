@@ -28,7 +28,7 @@ function ImageBrowser() {
 
    return (
       <div style={{ outline: "none" }} onKeyDown={handleKeyDown} tabIndex={-1}>
-         <BrowserControls onNext={prevImage} onPrev={nextImage} />
+         <BrowserControls onNext={nextImage} onPrev={prevImage} />
          <Viewer post={url} />
       </div>
    );
