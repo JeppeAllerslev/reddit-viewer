@@ -9,16 +9,21 @@ export default class SubredditHandler {
       this.index = -1;
       this.posts = [{ url: "" }];
       this.url = "";
-      this.setSubreddit(subreddit);
-      this.subreddit = subreddit;
+      this.subreddit = "";
    }
 
    handleListing(listing) {
       this.listing = listing;
       this.posts = listing.filter((post) => urlFilter(post.url));
+      if (this.index < 0) {
+         this.index = 0;
+         this.url = this.posts[this.index].url;
+      }
    }
 
    setSubreddit(subreddit) {
+      console.log("Subreddit: ", subreddit);
+      this.index = -1;
       if (subreddit != null && subreddit !== this.subreddit) {
          this.subreddit = subreddit;
          r.getSubreddit(this.subreddit)
