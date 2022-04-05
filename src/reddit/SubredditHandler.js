@@ -5,11 +5,12 @@ const credentials = require("./credentials.json");
 const r = new Snoowrap(credentials);
 
 export default class SubredditHandler {
-   constructor(subreddit) {
+   constructor() {
       this.index = -1;
       this.posts = [{ url: "" }];
       this.url = "";
-      this.subreddit = "";
+      this.subreddit = {display_name: ""};
+      this.getOptions = {type:"hot", time:"all"};
    }
 
    handleListing(listing) {
@@ -22,13 +23,32 @@ export default class SubredditHandler {
    }
 
    setSubreddit(subreddit) {
-      console.log("Subreddit: ", subreddit);
       this.index = -1;
-      if (subreddit != null && subreddit !== this.subreddit) {
-         this.subreddit = subreddit;
-         r.getSubreddit(this.subreddit)
-            .getHot()
-            .then((listing) => this.handleListing(listing));
+      this.url = "";
+      if (subreddit != null && this.subreddit.display_name !== subreddit) {
+         this.subreddit = r.getSubreddit(subreddit);
+         this.get();
+      }
+   }
+
+   setGetOptions(getOptions) {
+      this.getOptions = getOptions;
+      this.get();
+   }
+
+   get() {
+      switch(this.getOptions.type) {
+         case "hot":
+            this.subreddit.getHot().then((listing) => this.handleListing(listing));
+            break;
+         case "new":
+            this.subreddit.getNew().then((listing) => this.handleListing(listing));
+            break;
+         case "top":
+            this.subreddit.getTop({time: this.getOptions.time}).then((listing) => this.handleListing(listing));
+            break;
+         default:
+            this.subreddit.getHot().then((listing) => this.handleListing(listing));
       }
    }
 

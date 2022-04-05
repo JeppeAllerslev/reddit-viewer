@@ -12,8 +12,9 @@ function ImageBrowser(props) {
    useEffect(() => {
       setUrl("./loading.gif")
       handler.setSubreddit(props.subreddit);
-      setTimeout(() => setUrl(handler.url), 2000);
-   }, [props.subreddit]);
+      handler.setGetOptions(props.getOptions);
+      setTimeout(() => {setUrl(handler.url)}, 3000);
+   }, [props.subreddit, props.getOptions]);
 
    function nextImage() {
       handler.nextUrl();

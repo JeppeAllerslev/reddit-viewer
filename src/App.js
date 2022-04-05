@@ -7,17 +7,24 @@ import ImageBrowser from './imagebrowser';
 function App() {
 
   const [subreddit, setSubreddit] = useState("pics");
+  const [getOptions, setGetOptions] = useState({type:"hot", time:"all"});
 
   function handleSubmit(value) {
-    console.log("Subreddit: ", value);
     setSubreddit(value);
   }
 
+  function handleSort(getOptions) {
+    let val = getOptions.value;
+    let type = val.split("-")[0];
+    let time = val.split("-")[1];
+    setGetOptions({type:type, time:time});
+  }
+
   return (
-    <div>
-      <Searchbar submitFunction={handleSubmit}/>
-      <ImageBrowser subreddit={subreddit}/>
-    </div>
+    <React.Fragment>
+      <Searchbar submitFunction={handleSubmit} sortFunction={handleSort}/>
+      <ImageBrowser subreddit={subreddit} getOptions={getOptions}/>
+    </React.Fragment>
   );
 }
 

@@ -4,6 +4,7 @@
     height: 50px;
     display: flex;
     align-items: center;
+    font-family: sans-serif;
 }
 
 #searchbox {
