@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './styles/App.css';
 import Searchbar from './Searchbar';
 import ImageBrowser from './imagebrowser';
+import SubredditHandler from './reddit/SubredditHandler';
 
 function App() {
 

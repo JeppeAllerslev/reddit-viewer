@@ -7,7 +7,7 @@ const r = new Snoowrap(credentials);
 export default class SubredditHandler {
    constructor() {
       this.index = -1;
-      this.posts = [{ url: "" }];
+      this.posts = [{ url: "", title: "" }];
       this.url = "";
       this.subreddit = {display_name: ""};
       this.getOptions = {type:"hot", time:"all"};
@@ -69,6 +69,5 @@ export default class SubredditHandler {
       }
       this.index = Math.min(this.index + 1, this.posts.length - 1);
       this.url = this.posts[this.index].url;
-      console.log("Index: ", this.index, " Length: ", this.posts.length);
    }
 }
