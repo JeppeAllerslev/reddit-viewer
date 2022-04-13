@@ -18,7 +18,7 @@ function imageHandler(urlArg) {
 }
 
 async function gfycatHandler(url) {
-    let gfycatId = url.split("/")[3];
+    let gfycatId = url.split("/")[3].split("-")[0];
     return fetch("https://api.gfycat.com/v1/gfycats/" + gfycatId.toLowerCase())
         .then(response => {
             if (response.ok) {
@@ -35,6 +35,7 @@ async function gfycatHandler(url) {
 
 async function redgifsHandler(url) {
     let redgifsId = url.split("/")[3] === "watch" ? url.split("/")[4] : url.split("/")[3];
+    redgifsId = redgifsId.split("-")[0];
     return fetch("https://api.redgifs.com/v2/gifs/" + redgifsId.toLowerCase())
         .then(response => {
             if (response.ok) {
