@@ -20,7 +20,6 @@ function App() {
 
   function updatePost() {
     setPost(handler.post);
-    console.log(post);
   }
 
   function handleSort(getOptions) {

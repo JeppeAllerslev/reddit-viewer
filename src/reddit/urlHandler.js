@@ -28,7 +28,6 @@ async function gfycatHandler(url) {
         })
         .then(data =>  <video src={data.gfyItem.webmUrl} autoPlay controls loop muted />)
         .catch(error => {
-            console.log("No gfycat found, trying redgifs");
             return redgifsHandler(url);
         });
 }
