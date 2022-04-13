@@ -5,13 +5,22 @@ import Searchbar from './Searchbar';
 import ImageBrowser from './imagebrowser';
 import SubredditHandler from './reddit/SubredditHandler';
 
+const handler = new SubredditHandler();
+document.handler = handler;
+
 function App() {
 
+  const [post, setPost] = useState({url:"",title:""});
   const [subreddit, setSubreddit] = useState("pics");
   const [getOptions, setGetOptions] = useState({type:"hot", time:"all"});
 
   function handleSubmit(value) {
     setSubreddit(value);
+  }
+
+  function updatePost() {
+    setPost(handler.post);
+    console.log(post);
   }
 
   function handleSort(getOptions) {
@@ -23,8 +32,8 @@ function App() {
 
   return (
     <React.Fragment>
-      <Searchbar submitFunction={handleSubmit} sortFunction={handleSort}/>
-      <ImageBrowser subreddit={subreddit} getOptions={getOptions}/>
+      <Searchbar submitFunction={handleSubmit} sortFunction={handleSort} post={post}/>
+      <ImageBrowser handler={handler} subreddit={subreddit} getOptions={getOptions} postUpdateFunction={updatePost}/>
     </React.Fragment>
   );
 }

@@ -37,8 +37,12 @@ async function redgifsHandler(url) {
     let redgifsId = url.split("/")[3] === "watch" ? url.split("/")[4] : url.split("/")[3];
     return fetch("https://api.redgifs.com/v2/gifs/" + redgifsId.toLowerCase())
         .then(response => {
-            return response.json();
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error(response.statusText);
         })
-        .then(data => <video src={data.gif.urls.hd} autoPlay controls loop muted />);
+        .then(data => <video src={data.gif.urls.hd} autoPlay controls loop muted />)
+        .catch(error => <h1 style={{color: "red", fontSize: "100px"}}>404</h1>);
 }
 

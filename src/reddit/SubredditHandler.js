@@ -7,8 +7,8 @@ const r = new Snoowrap(credentials);
 export default class SubredditHandler {
    constructor() {
       this.index = -1;
-      this.posts = [{ url: "", title: "" }];
-      this.url = "";
+      this.posts = [{ url: ""}];
+      this.post = null;
       this.subreddit = {display_name: ""};
       this.getOptions = {type:"hot", time:"all"};
    }
@@ -18,13 +18,12 @@ export default class SubredditHandler {
       this.posts = listing.filter((post) => urlFilter(post.url));
       if (this.index < 0) {
          this.index = 0;
-         this.url = this.posts[this.index].url;
+         this.post = this.posts[this.index];
       }
    }
 
    setSubreddit(subreddit) {
       this.index = -1;
-      this.url = "";
       if (subreddit != null && this.subreddit.display_name !== subreddit) {
          this.subreddit = r.getSubreddit(subreddit);
          this.get();
@@ -60,7 +59,7 @@ export default class SubredditHandler {
 
    prevUrl() {
       this.index = Math.max(this.index - 1, 0);
-      this.url = this.posts[this.index].url;
+      this.post = this.posts[this.index];
    }
 
    nextUrl() {
@@ -68,6 +67,6 @@ export default class SubredditHandler {
          this.getMore();
       }
       this.index = Math.min(this.index + 1, this.posts.length - 1);
-      this.url = this.posts[this.index].url;
+      this.post = this.posts[this.index];
    }
 }

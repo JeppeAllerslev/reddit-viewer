@@ -25,7 +25,7 @@ const options = [
    },
 ];
 
-function Searchbar({ submitFunction, sortFunction }) {
+function Searchbar({ submitFunction, sortFunction, post }) {
 
    const [dropdownValue, setDropdownValue] = useState(options[0]);
    
@@ -38,6 +38,7 @@ function Searchbar({ submitFunction, sortFunction }) {
    function enterHandler(event) {
       if (event.key === "Enter") {
          handleSubmit(event);
+         event.target.blur();
       }
    }
 
@@ -52,7 +53,7 @@ function Searchbar({ submitFunction, sortFunction }) {
             <input
                id="subInput"
                type="text"
-               placeholder="Search subreddits"
+               placeholder="Subreddit"
                onKeyDown={enterHandler}
             />
             <button onClick={handleSubmit}>
@@ -67,6 +68,7 @@ function Searchbar({ submitFunction, sortFunction }) {
             className="dropdown"
             placeholder="Select an option"
          />
+         <a target="_blank" rel="noopener noreferrer" id="postTitle" href={"https://www.reddit.com/"+post.permalink}>{post.title}</a>
       </div>
    );
 }
