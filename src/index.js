@@ -10,6 +10,7 @@ ReactDOM.render(
     <Routes>
       <Route path="/:subreddit" element={<App />} />
       <Route path="/" element={<App />} />
+      <Route path="*" element={<h1 style={{color:"red"}}>404</h1>} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>,

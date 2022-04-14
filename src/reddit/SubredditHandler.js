@@ -7,8 +7,8 @@ const r = new Snoowrap(credentials);
 export default class SubredditHandler {
    constructor() {
       this.index = -1;
-      this.posts = [{ url: ""}];
-      this.post = null;
+      this.posts = [{ url: "", title: "" }];
+      this.post = this.posts[0];
       this.subreddit = {display_name: ""};
       this.getOptions = {type:"hot", time:"all"};
    }
