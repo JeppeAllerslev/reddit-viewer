@@ -68,5 +68,6 @@ export default class SubredditHandler {
       }
       this.index = Math.min(this.index + 1, this.posts.length - 1);
       this.post = this.posts[this.index];
+      console.log("Index: " + this.index + " of " + this.posts.length);
    }
 }
